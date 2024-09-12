@@ -1,0 +1,43 @@
+/* src/styles/theme.css */
+
+/* Common styles for all pages */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: url('../images/f1.jpg') no-repeat center center/cover;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    width: 256px;
+    height: 256px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: rgb(191, 28, 28);
+}
+
+button,
+.btn {
+    background-color: rgb(191, 28, 28);
+    color: #1f293a;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+button:hover,
+.btn:hover {
+    background-color: #d41d1d;
+}
+
+/* Add other common styles here */

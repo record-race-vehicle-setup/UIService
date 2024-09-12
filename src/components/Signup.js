@@ -27,46 +27,48 @@ function Signup() {
     };
 
     return (
-        <div className="container">
-            <div className="signup-box">
-                <h2>Sign Up</h2>
-                <form onSubmit={handleSignup}>
-                    <div className="input-box">
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
-                        <label>Name</label>
-                    </div>
-                    <div className="input-box">
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <label>Email</label>
-                    </div>
-                    <div className="input-box">
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <label>Password</label>
-                    </div>
-                    <button type="submit" className="btn">Sign Up</button>
-                    <div className="login-link point">
-                        <a onClick={() => navigate('/')}>Login</a>
-                    </div>
-                </form>
+        <div className='mainContainer'>
+            <div className="container">
+                <div className="signup-box">
+                    <h2>Sign Up</h2>
+                    <form onSubmit={handleSignup}>
+                        <div className="input-box">
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                            />
+                            <label>Name</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <label>Email</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <label>Password</label>
+                        </div>
+                        <button type="submit" className="btn">Sign Up</button>
+                        <div className="login-link point">
+                            <a onClick={() => navigate('/')}>Login</a>
+                        </div>
+                    </form>
+                </div>
+                {[...Array(50)].map((_, i) => (
+                    <span key={i} style={{ "--i": i }}></span>
+                ))}
             </div>
-            {[...Array(50)].map((_, i) => (
-                <span key={i} style={{ "--i": i }}></span>
-            ))}
         </div>
     );
 }

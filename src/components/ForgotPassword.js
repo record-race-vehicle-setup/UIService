@@ -26,28 +26,30 @@ function ForgotPassword() {
     };
 
     return (
-        <div className="container">
-            <div className="forgot-password-box">
-                <h2>Forgot Password</h2>
-                <form onSubmit={handleForgotPassword}>
-                    <div className="input-box">
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <label>Email</label>
-                    </div>
-                    <button type="submit" className="btn">Send Reset Link</button>
-                    <div className="login-link">
-                        <a onClick={() => navigate('/')}>Back to Login</a>
-                    </div>
-                </form>
+        <div className='mainContainer'>
+            <div className="container">
+                <div className="forgot-password-box">
+                    <h2>Forgot Password</h2>
+                    <form onSubmit={handleForgotPassword}>
+                        <div className="input-box">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <label>Email</label>
+                        </div>
+                        <button type="submit" className="btn">Send Reset Link</button>
+                        <div className="login-link">
+                            <a onClick={() => navigate('/')}>Back to Login</a>
+                        </div>
+                    </form>
+                </div>
+                {[...Array(50)].map((_, i) => (
+                    <span key={i} style={{ "--i": i }}></span>
+                ))}
             </div>
-            {[...Array(50)].map((_, i) => (
-                <span key={i} style={{ "--i": i }}></span>
-            ))}
         </div>
     );
 }

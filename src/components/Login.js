@@ -26,40 +26,42 @@ function Login() {
     };
 
     return (
-        <div className="container">
-            <div className="login-box">
-                <h2>Login</h2>
-                <form onSubmit={handleLogin}>
-                    <div className="input-box">
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                        <label>Email</label>
-                    </div>
-                    <div className="input-box">
-                        <input
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <label>Password</label>
-                    </div>
-                    <div className="forgot-pass point">
-                        <a onClick={() => navigate('/forgot-password')}>Forgot your password?</a>
-                    </div>
-                    <button type="submit" className="btn">Login</button>
-                    <div className="signup-link point">
-                        <a onClick={() => navigate('/signup')}>Signup</a>
-                    </div>
-                </form>
+        <div className='mainContainer'>
+            <div className="container">
+                <div className="login-box">
+                    <h2>Login</h2>
+                    <form onSubmit={handleLogin}>
+                        <div className="input-box">
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                            />
+                            <label>Email</label>
+                        </div>
+                        <div className="input-box">
+                            <input
+                                type="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            <label>Password</label>
+                        </div>
+                        <div className="forgot-pass point">
+                            <a onClick={() => navigate('/forgot-password')}>Forgot your password?</a>
+                        </div>
+                        <button type="submit" className="btn">Login</button>
+                        <div className="signup-link point">
+                            <a onClick={() => navigate('/signup')}>Signup</a>
+                        </div>
+                    </form>
+                </div>
+                {[...Array(50)].map((_, i) => (
+                    <span key={i} style={{ "--i": i }}></span>
+                ))}
             </div>
-            {[...Array(50)].map((_, i) => (
-                <span key={i} style={{ "--i": i }}></span>
-            ))}
         </div>
     );
 }

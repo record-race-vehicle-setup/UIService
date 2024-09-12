@@ -1,0 +1,153 @@
+/* src/styles/Home.css */
+
+.homeMainContainer {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: url('../images/bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-container {
+    text-align: center;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Positioning for each letter */
+.h {
+    top: -2.25vh;
+    z-index: 3;
+}
+
+.i {
+    top: -1vh;
+    z-index: 9;
+}
+
+.space {
+    width: 1.2vw;
+}
+
+.hello-engineer-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 30vh;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+}
+
+.hello-engineer-container p {
+    color: transparent;
+    font-size: 10vw;
+    font-family: Rubik, sans-serif;
+    font-weight: 600;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6),
+        0px 2px 15px rgba(10, 10, 10, 0.5),
+        0px 5px 25px rgba(20, 20, 20, 0.4);
+    margin: 0 calc(5vw / var(--char-count)) -1.9vw;
+    position: relative;
+    animation: rise 5s linear, textShadow 3s linear alternate infinite 5s;
+    cursor: pointer;
+}
+
+.hello-engineer-container p:hover {
+    color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgb(105, 87, 87);
+    z-index: 11;
+}
+
+/* Automatically adjust the top position based on character index */
+.hello-engineer-container p:nth-child(odd) {
+    top: -2.5vh;
+    z-index: 3;
+}
+
+.hello-engineer-container p:nth-child(even) {
+    top: 1vh;
+    z-index: 5;
+}
+
+/* Animation keyframes */
+@keyframes rise {
+    0% {
+        color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgb(100, 100, 100);
+        text-shadow: 0px 0px 1px rgba(255, 255, 255, 0),
+            0px 0px 5px rgba(0, 0, 0, 0),
+            0px 2px 15px rgba(10, 10, 10, 0),
+            0px 5px 25px rgba(20, 20, 20, 0);
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    30% {
+        color: transparent;
+        text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.1),
+            0px 0px 5px rgba(0, 0, 0, 0.2),
+            0px 2px 15px rgba(10, 10, 10, 0.3),
+            0px 5px 25px rgba(20, 20, 20, 0);
+    }
+
+    70% {
+        color: transparent;
+        text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.3),
+            0px 0px 5px rgba(0, 0, 0, 0.6),
+            0px 2px 15px rgba(10, 10, 10, 0.5),
+            0px 5px 25px rgba(20, 20, 20, 0.4);
+    }
+
+    100% {
+        color: transparent;
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgb(100, 100, 100);
+        text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.4),
+            0px 0px 1px rgba(188, 19, 19, 0.362),
+            0px 2px 4px rgba(180, 26, 26, 0.4),
+            0px 5px 6px rgba(255, 0, 0, 0.251);
+        opacity: 1;
+    }
+}
+
+@keyframes textShadow {
+    0% {
+        text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.5),
+            0px 0px 1px rgba(140, 18, 18, 0.362),
+            0px 2px 5px rgba(148, 22, 22, 0.4),
+            0px 5px 7px rgba(255, 48, 48, 0.2);
+    }
+
+    25% {
+        text-shadow: 0px 0px 2px rgba(255, 255, 255, 0.4),
+            -1px -1px 2px rgba(206, 22, 22, 0.4),
+            -2px -2px 6px rgba(242, 54, 54, 0.3),
+            -4px -5px 8px rgba(199, 29, 29, 0.2);
+    }
+
+    50% {
+        text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.4),
+            0px 0px 3px rgba(122, 17, 17, 0.6),
+            0px 2px 5px rgba(125, 16, 16, 0.5),
+            0px 5px 8px rgba(157, 22, 22, 0.4);
+    }
+
+    100% {
+        text-shadow: 0px 0px 1px rgba(255, 255, 255, 0.5),
+            1px 0px 1px rgba(114, 17, 17, 0.6),
+            2px 2px 4px rgba(136, 15, 15, 0.5),
+            4px 5px 6px rgba(176, 26, 26, 0.4);
+    }
+}
