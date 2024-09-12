@@ -23,7 +23,8 @@ h2 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-bottom: -7vw;
+    /* margin-bottom: -7vw; */
+    margin-top: 5vw;
 }
 
 .type {
