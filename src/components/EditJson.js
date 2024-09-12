@@ -106,7 +106,7 @@ function EditJson() {
 
     return (
         <div className="edit-json-container">
-            <div className="container">
+            <div className="container2">
                 <div className="center">
                     <h1 className="type">Edit File Data</h1>
                 </div>

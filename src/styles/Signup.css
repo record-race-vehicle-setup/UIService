@@ -52,6 +52,7 @@
 .signup-box {
     position: absolute;
     width: 400px;
+    height: 33vw;
 }
 
 .signup-box form {
