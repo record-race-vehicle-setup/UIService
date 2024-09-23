@@ -20,6 +20,22 @@
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
+.create-file-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.create-file-button:hover {
+    background-color: #218838;
+}
+
 /* Positioning for each letter */
 .h {
     top: -2.25vh;
@@ -150,4 +166,20 @@
             2px 2px 4px rgba(136, 15, 15, 0.5),
             4px 5px 6px rgba(176, 26, 26, 0.4);
     }
+}
+
+.create-file-button {
+    background-color: rgb(191, 28, 28);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    /* margin-bottom: 20px; */
+}
+
+.create-file-button:hover {
+    background-color: #d41d1d;
 }

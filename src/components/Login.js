@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Login.css';  // Import the CSS file
+import Swal from 'sweetalert2';
+import '../styles/Login.css';
+import { callApi } from '../common/apiUtils';
 
 function Login() {
     const [email, setEmail] = useState('');
@@ -9,19 +11,40 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        // Placeholder for API call to login the user
-        const response = await fetch('/api/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
+        const payload = { email, password };
 
-        if (response.ok) {
-            navigate('/home');
+        const result = await callApi('http://localhost:5555/login', payload);
+
+        if (result) {
+            console.log(result); // Log the result
+
+            // Assuming the response contains the access token
+            const accessToken = result.access_token;
+
+            // Save the access token in sessionStorage for later use
+            sessionStorage.setItem('accessToken', accessToken);
+
+            // Display success toast
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Login successful!',
+                showConfirmButton: false,
+                timer: 2000,
+                toast: true,
+            });
+
+            // Navigate to home page after success
+            setTimeout(() => {
+                navigate('/home');
+            }, 2000);
         } else {
-            alert('Login failed. Please check your credentials.');
+            // Show error toast if login fails
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Invalid email or password. Please try again!',
+            });
         }
     };
 

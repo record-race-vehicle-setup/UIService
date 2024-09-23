@@ -47,7 +47,7 @@ function FileUpload() {
                 style={{ display: 'none' }}
             />
             <label htmlFor="fileInput" className="file-upload-button">
-                Upload JSON File
+                Upload File
             </label>
             <button className="btn upload-btn" onClick={handleUpload} disabled={!file}>
                 Submit

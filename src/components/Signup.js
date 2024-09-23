@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import '../styles/Signup.css';  // Import the CSS file for the signup page
+import { callApi } from '../common/apiUtils';  // Import the common API utility
+
+const MySwal = withReactContent(Swal);
 
 function Signup() {
     const [name, setName] = useState('');
@@ -10,19 +15,27 @@ function Signup() {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        // Placeholder for API call to signup the user
-        const response = await fetch('/api/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ name, email, password }),
-        });
+        const payload = { userName: name, email, password };
 
-        if (response.ok) {
-            navigate('/');
-        } else {
-            alert('Signup failed. Please try again.');
+        const result = await callApi('http://localhost:5555/signup', payload);
+
+        if (result) {
+            console.log(result); // Log response to console
+
+            // SweetAlert2 success notification
+            MySwal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: result.msg,
+                showConfirmButton: false,
+                timer: 2000, // Display for 2 seconds
+                toast: true,
+            });
+
+            // Navigate after the SweetAlert timer finishes
+            setTimeout(() => {
+                navigate('/');
+            }, 2000);
         }
     };
 
@@ -31,6 +44,7 @@ function Signup() {
             <div className="container">
                 <div className="signup-box">
                     <h2>Sign Up</h2>
+
                     <form onSubmit={handleSignup}>
                         <div className="input-box">
                             <input
