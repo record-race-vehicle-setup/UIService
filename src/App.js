@@ -7,6 +7,8 @@ import Home from './components/Home';
 import ForgotPassword from './components/ForgotPassword';
 import EditJson from './components/EditJson';
 import CreateFile from './components/CreateFile';
+import ResetPassword from './components/ResetPassword';
+import ViewFiles from './components/viewFiles';
 
 function PrivateRoute({ children }) {
   const token = sessionStorage.getItem('accessToken');
@@ -20,6 +22,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password/:id" element={<ResetPassword />} />
           <Route
             path="/home"
             element={
@@ -29,9 +33,11 @@ function App() {
             }
           />
           <Route
-            path="/forgot-password"
+            path="/viewFiles"
             element={
-              <ForgotPassword />
+              <PrivateRoute>
+                <ViewFiles />
+              </PrivateRoute>
             }
           />
           <Route

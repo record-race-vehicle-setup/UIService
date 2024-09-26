@@ -23,6 +23,13 @@
     background-color: #d41d1d;
 }
 
+.file-name-display {
+    margin-top: 10px;
+    font-size: 1em;
+    color: #333;
+    word-break: break-word;
+}
+
 .upload-btn {
     background-color: #1f293a;
     color: #fff;
@@ -70,4 +77,216 @@
     100% {
         opacity: 0;
     }
+}
+
+.file-upload-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 18px;
+}
+
+.file-upload-button {
+    background-color: rgb(191, 28, 28);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.file-upload-button:hover {
+    background-color: #d41d1d;
+}
+
+.modal-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-container h2 {
+    margin-bottom: 20px;
+}
+
+.modal-container input {
+    margin-bottom: 15px;
+    padding: 8px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.modal-submit-button:hover,
+.modal-close-button:hover {
+    opacity: 0.8;
+}
+
+
+/* cross button in modal */
+[class^="item"] {
+    text-decoration: none;
+    margin-right: 20px;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.crossBtn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: transparent;
+    border: none;
+    left: 161px;
+    margin-bottom: -53px;
+
+}
+
+.crossBtn:before,
+.crossBtn:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 50%;
+    background-color: rgb(191, 28, 28);
+    transition: width .2s ease-out;
+}
+
+.crossBtn:before {
+    transform: rotate(45deg);
+    left: 7px;
+    top: 7px;
+    transform-origin: left;
+}
+
+.crossBtn:after {
+    transform: rotate(-45deg);
+    right: 7px;
+    top: 7px;
+    transform-origin: right;
+}
+
+.crossBtnInner {
+    color: rgb(191, 28, 28);
+}
+
+.crossBtnInner:before,
+.crossBtnInner:after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    width: 50%;
+    background-color: rgb(191, 28, 28);
+    transition: width .2s ease-out;
+}
+
+.crossBtnInner:before {
+    transform: rotate(45deg);
+    transform-origin: right;
+    bottom: 6px;
+    right: 8px;
+}
+
+.crossBtnInner:after {
+    transform: rotate(-45deg);
+    transform-origin: left;
+    bottom: 6px;
+    left: 8px;
+}
+
+.crossBtnLabel {
+    opacity: 0;
+    transition: all .2s ease-out;
+}
+
+.crossBtn:focus,
+.crossBtn:hover {
+
+    &:before,
+    &:after {
+        width: 10px;
+    }
+}
+
+.crossBtn:focus .crossBtnInner:before,
+.crossBtn:focus .crossBtnInner:after,
+.crossBtn:hover .crossBtnInner:before,
+.crossBtn:hover .crossBtnInner:after {
+    width: 10px;
+}
+
+.crossBtn:focus .crossBtnLabel,
+.crossBtn:hover .crossBtnLabel {
+    opacity: 1;
+}
+
+.file-upload-button2 {
+    background-color: rgb(191, 28, 28);
+    color: #fff;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.file-upload-button2:hover {
+    background-color: #d41d1d;
+}
+
+.submitFile {
+    background-color: rgb(27, 25, 25);
+    color: #fff;
+    padding: 15px 44px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.submitFile:hover {
+    background-color: rgb(0, 0, 0);
+}
+
+.popUpHeading {
+    font-size: 1.6em;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: #ff3b3b;
+    font-weight: bold;
+}
+
+.datepicker {
+    align-items: start;
+    position: relative;
+    left: -125px;
+    color: #d41d1d;
 }

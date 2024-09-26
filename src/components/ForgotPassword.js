@@ -1,32 +1,64 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/ForgotPassword.css';  // Import the CSS file
+import Swal from 'sweetalert2';
+import { callApi } from '../common/apiUtils';
+import { BeatLoader } from 'react-spinners';  // Import BeatLoader
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);  // Loading state for spinner
     const navigate = useNavigate();
 
     const handleForgotPassword = async (e) => {
         e.preventDefault();
-        // Placeholder for API call to initiate password reset
-        const response = await fetch('/api/forgot-password', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email }),
-        });
+        setLoading(true);  // Start loading spinner
 
-        if (response.ok) {
-            alert('Password reset link sent to your email.');
-            navigate('/');
+        // Placeholder for API call to initiate password reset
+        const response = await callApi('/reset/pwd/request', { email });
+
+        if (response && response.message.includes('Password reset link sent')) {
+            Swal.fire({
+                position: 'top-end',
+                timer: 2000,
+                showConfirmButton: false,
+                toast: true,
+                title: 'Password reset link sent to your email.',
+                icon: 'success',
+            }).then(() => {
+                // Redirect to the home page
+                navigate('/home');
+            });
+        } else if (response && response.message.includes('Invalid email')) {
+            // Handle invalid email case
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Failed to send reset link. Invalid email.',
+                showConfirmButton: false,
+                timer: 2000,
+                toast: true,
+            });
         } else {
-            alert('Failed to send reset link. Please check your email.');
+            // Handle other failure cases
+            Swal.fire({
+                position: 'top-end',
+                icon: 'error',
+                title: 'Failed to send reset link. Please check your email.',
+                showConfirmButton: false,
+                timer: 2000,
+                toast: true,
+            });
         }
+
+        setLoading(false);  // Stop loading spinner
     };
 
     return (
         <div className='mainContainer'>
+            <div className="loader-container">
+                <BeatLoader color="#36d7b7" loading={loading} size={15} />
+            </div>
             <div className="container">
                 <div className="forgot-password-box">
                     <h2>Forgot Password</h2>
@@ -37,12 +69,13 @@ function ForgotPassword() {
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
+                                disabled={loading}  // Disable input while loading
                             />
                             <label>Email</label>
                         </div>
                         <button type="submit" className="btn">Send Reset Link</button>
-                        <div className="login-link">
-                            <a onClick={() => navigate('/')}>Back to Login</a>
+                        <div className="login-link point">
+                            <a onClick={() => !loading && navigate('/')}>Back to Login</a>
                         </div>
                     </form>
                 </div>
